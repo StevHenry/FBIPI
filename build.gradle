@@ -1,0 +1,32 @@
+plugins {
+    id 'java'
+    id 'com.github.johnrengelman.shadow' version '5.2.0'
+}
+
+group 'fr.stevhnry.discordHomeworks'
+version '1.0'
+
+project.buildDir "/generated"
+compileJava.options.encoding = 'UTF-8'
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+
+shadowJar {
+    archiveName = "FBIPI-${version}.${extension}"
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'fr.stevhnry.fbipi'
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.slf4j:slf4j-api:1.8.0-beta2'
+    runtime 'org.apache.logging.log4j:log4j-slf4j-impl:2.11.0'
+}
